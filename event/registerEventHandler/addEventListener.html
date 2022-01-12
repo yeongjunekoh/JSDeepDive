@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<button>Click me!</button>
+	<script>
+		const $button = document.querySelector('button');
+
+		$button.onclick = function sayHi() {
+			console.log("Button Click");
+		};
+
+        $button.addEventListener('click', function () {
+			console.log("Button Clickㅁㅁㅁㅁ");
+		});
+        $button.addEventListener('click', function () {
+			console.log("Button 여러개");
+		});
+        $button.addEventListener('mouseover', function () {
+			console.log("mouseover");
+		});
+	</script>
+</body>
+</html>
