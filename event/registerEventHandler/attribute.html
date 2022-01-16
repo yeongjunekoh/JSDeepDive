@@ -4,9 +4,13 @@
 	<button onclick="sayHi('Lee')">Click me!</button>
 	<button onmouseover="mouseover()">mouseover</button>
 	<script>
+
+		const $button = document.querySelector('button');
+
 		function sayHi(name) {
 			console.log(`Hi! ${name}.`);
 		}
+		$button.onclick = null;
 		function mouseover() {
 			console.log(`mouseover`);
 		}

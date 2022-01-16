@@ -5,6 +5,8 @@
 	<script>
 		const $button = document.querySelector('button');
 
+		const listenerFun = () => {console.log("listern")}
+
 		$button.onclick = function sayHi() {
 			console.log("Button Click");
 		};
@@ -15,9 +17,9 @@
         $button.addEventListener('click', function () {
 			console.log("Button 여러개");
 		});
-        $button.addEventListener('mouseover', function () {
-			console.log("mouseover");
-		});
+        $button.addEventListener('mouseover', listenerFun);
+		
+        $button.removeEventListener('mouseover', listenerFun);
 	</script>
 </body>
 </html>
