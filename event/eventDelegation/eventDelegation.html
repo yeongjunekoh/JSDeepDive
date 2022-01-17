@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #fruits .activate {
+                color:red;
+            }
+        </style>
+    </head>
+<body>
+	<ul id="fruits">
+		<li id="banana">banana</li>
+		<li id="apple">apple<p>안녕하세요</p></li>
+		<li id="juice">juice</li>
+
+		<em class="msg"></em>
+	</ul>
+	<script>
+		const $fruits = document.getElementById('fruits');
+		const $banana = document.getElementById('banana');
+		const $msg = document.querySelector('.msg');
+
+		function activate ({target}) {
+            if(!target.matches('#fruits > li')) return;
+
+            [...$fruits.children].forEach($fruit => {
+                $fruit.classList.toggle('activate', $fruit === target);
+                $msg.textContent = target.id;
+            })
+        }
+
+        $fruits.onclick = activate
+	</script>
+</body>
+</html>

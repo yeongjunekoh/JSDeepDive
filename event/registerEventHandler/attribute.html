@@ -2,7 +2,7 @@
 <html>
 <body>
 	<button onclick="sayHi('Lee')">Click me!</button>
-	<button onmouseover="mouseover()">mouseover</button>
+	<button onmouseover="mouseover(event)">mouseover</button>
 	<script>
 
 		const $button = document.querySelector('button');
@@ -11,8 +11,9 @@
 			console.log(`Hi! ${name}.`);
 		}
 		$button.onclick = null;
-		function mouseover() {
+		function mouseover(event) {
 			console.log(`mouseover`);
+			console.log(event);
 		}
 	</script>
 </body>

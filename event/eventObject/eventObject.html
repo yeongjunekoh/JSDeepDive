@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p>Click me! 클릭한 곳의 좌표가 나올 예정입니다.</p>
+	<em class="message"></em>
+	<script>
+		const $msg = document.querySelector('.message');
+		let e = new MouseEvent("click");
+		console.log(e);
+		console.log(e.type);
+		console.log(e instanceof Object);
+		console.log(e instanceof Event);
+
+		function showCoords(e) {
+			$msg.textContent = `${e.clientX} // ${e.clientY}`;
+			console.log(e);
+		}
+
+        document.onclick = showCoords;
+	</script>
+</body>
+</html>
