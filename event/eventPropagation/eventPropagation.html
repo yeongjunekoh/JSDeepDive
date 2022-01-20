@@ -11,26 +11,27 @@
 		const $banana = document.getElementById('banana');
 		
 		$fruits.addEventListener('click', e => {
+			e.preventDefault();
 			console.log("이벤트 단계", e.eventPhase);
 			console.log("이벤트 타깃", e.target);
 			console.log("커런트 타겟", e.currentTarget);
-		})
-		$fruits.addEventListener('click', e => {
-			console.log("이벤트 단계", e.eventPhase);
-			console.log("이벤트 타깃", e.target);
-			console.log("커런트 타겟", e.currentTarget);
-		}, true)
+		}, false)
+		// $fruits.addEventListener('click', e => {
+		// 	console.log("이벤트 단계", e.eventPhase);
+		// 	console.log("이벤트 타깃", e.target);
+		// 	console.log("커런트 타겟", e.currentTarget);
+		// }, true)
 		$banana.addEventListener('click', e => {
 			// e.stopPropagation();
 			console.log("이벤트 단계", e.eventPhase);
 			console.log("이벤트 타깃", e.target);
 			console.log("커런트 타겟", e.currentTarget);
 		})
-		$fruits.addEventListener('click', e => {
-			console.log("이벤트 단계", e.eventPhase);
-			console.log("이벤트 타깃", e.target);
-			console.log("커런트 타겟", e.currentTarget);
-		})
+		// $fruits.addEventListener('click', e => {
+		// 	console.log("이벤트 단계", e.eventPhase);
+		// 	console.log("이벤트 타깃", e.target);
+		// 	console.log("커런트 타겟", e.currentTarget);
+		// })
 	</script>
 </body>
 </html>

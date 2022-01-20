@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<p>Click me! 클릭한 곳의 좌표가 나올 예정입니다.</p>
-	<em class="message"></em>
+	<p onclick="showCoords(e)">Click me! 클릭한 곳의 좌표가 나올 예정입니다.</p>
+	<!-- <em class="message" onclick="showCoords(event)"></em> -->
 	<script>
 		const $msg = document.querySelector('.message');
 		let e = new MouseEvent("click");
@@ -11,12 +11,12 @@
 		console.log(e instanceof Object);
 		console.log(e instanceof Event);
 
-		function showCoords(e) {
+		function showCoords(event) {
 			$msg.textContent = `${e.clientX} // ${e.clientY}`;
 			console.log(e);
 		}
 
-        document.onclick = showCoords;
+        // document.onclick = showCoords;
 	</script>
 </body>
 </html>
