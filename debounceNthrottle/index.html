@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>디바운스와 스로틀</title>
+</head>
+<body>
+	<button> Normal Click me!</button>
+		<h3 class="normal">0</h3>
+    <p onclick="">Click me! debounce! p태그로 만든 Click me! <h3 class="debounce"> 0</h3></p>
+    <h1 onclick="">Click me!  throttle! h1태그로 만든 Click me! <h3 class="throttle">0</h3></h1>
+	<em class="message" onclick=""></em>
+
+	<script>
+		const button = document.querySelector('button');
+		const p = document.querySelector('p');
+		const h1 = document.querySelector('h1');
+		const em = document.querySelector('.message');
+		const normalText = document.querySelector('.normal');
+		const debounceText = document.querySelector('.debounce');
+		const throttleText = document.querySelector('.throttle');
+
+		const debounce = (callback, delay) => {
+			let timerId;
+			return event => {
+				if(timerId) clearTimeout(timerId);
+				timerId = setTimeout(callback, delay, event);
+			}
+		}
+		const throttle = (callback, delay) => {
+			let timerId;
+			return event => {
+				if(timerId) return;
+				timerId = setTimeout((event)=>{
+					callback(event)
+					timerId = null;
+				},delay, event);
+			}
+		}
+		button.addEventListener("click", ()=>{
+			normalText.textContent = + normalText.textContent + 1;
+		});
+		p.addEventListener("click", debounce(()=>{
+			debounceText.textContent = + debounceText.textContent + 1;
+		},500));
+		h1.addEventListener("click", throttle(()=>{
+			throttleText.textContent = + throttleText.textContent + 1;
+		}, 500));
+
+
+	</script>
+</body>
+</html>
