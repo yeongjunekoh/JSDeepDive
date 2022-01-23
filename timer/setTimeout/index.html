@@ -16,13 +16,15 @@
             const timeout = setTimeout((name)=>{
                 console.log("setTimeout함수 실행", name)
             },2000, "인수 1");
-            // clearTimeout(timeout); 기존에 실행했던 함수가 취소되는 것
+            // clearTimeout(timeout); 
+            // 기존에 실행했던 함수가 취소되는 것
         };
 
         const setTimeoutIdNumber = setTimeout(()=>{
             console.log("바로 실행되는 setTimeout 함수");
         },1000)
-        // clearTimeout(setTimeoutIdNumber); 기존에 실행했던 함수가 취소되는 것
+        // clearTimeout(setTimeoutIdNumber); 
+        // 기존에 실행했던 함수가 취소되는 것
 
 
         const onClickFunction = () => setTimeoutIdNumber;

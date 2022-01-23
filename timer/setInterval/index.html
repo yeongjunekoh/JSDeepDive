@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<button>Click me!</button>
+    <p onclick="">Click me! p태그로 만든 Click me!</p>
+    <h1 onclick="">Click me! h1태그로 만든 Click me!</h1>
+	<em class="message" onclick=""></em>
+
+	<script>
+		const button = document.querySelector('button');
+		const p = document.querySelector('p');
+		const h1 = document.querySelector('h1');
+		const em = document.querySelector('.message');
+
+        const setIntervalId = () => {
+            const timeout = setInterval((name)=>{
+                console.log("setInterval함수 실행", name)
+            },2000, "인수 1");
+            // clearInterval(setIntervalId); 
+            // 기존에 실행했던 함수가 취소되는 것
+        };
+
+        const setIntervalIdNumber = setInterval(()=>{
+            console.log("바로 실행되는 setInterval 함수");
+        },1000)
+        setTimeout(()=>{
+            clearInterval(setIntervalIdNumber); 
+        },10000)
+        // clearInterval(setIntervalIdNumber); 
+        // 기존에 실행했던 함수가 취소되는 것
+
+
+        const onClickFunction = () => setIntervalIdNumber;
+
+        console.log(setIntervalId, "함수로 선언");
+        console.log(setIntervalIdNumber, "setInterval 자체로 선언");
+        console.log(onClickFunction, "setInterval 자체로 선언");
+
+        button.onclick = setIntervalId;
+        p.onclick = onClickFunction;
+
+	</script>
+</body>
+</html>
