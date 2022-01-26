@@ -16,7 +16,7 @@
             const timeout = setTimeout((name)=>{
                 console.log("setTimeout함수 실행", name)
             },2000, "인수 1");
-            // clearTimeout(timeout); 
+            clearTimeout(timeout); 
             // 기존에 실행했던 함수가 취소되는 것
         };
 
@@ -29,9 +29,9 @@
 
         const onClickFunction = () => setTimeoutIdNumber;
 
-        console.log(setTimeoutId, "함수로 선언");
-        console.log(setTimeoutIdNumber, "setTimeout 자체로 선언");
-        console.log(onClickFunction, "setTimeout 자체로 선언");
+        console.log(setTimeoutId, "01. 함수로 선언");
+        console.log(setTimeoutIdNumber, "02. setTimeout 자체로 선언");
+        console.log(onClickFunction, "03. setTimeout, 함수로 선언");
 
         button.onclick = setTimeoutId;
         p.onclick = onClickFunction;

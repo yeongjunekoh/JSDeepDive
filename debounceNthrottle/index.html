@@ -26,6 +26,7 @@
 				timerId = setTimeout(callback, delay, event);
 			}
 		}
+		
 		const throttle = (callback, delay) => {
 			let timerId;
 			return event => {
@@ -36,15 +37,16 @@
 				},delay, event);
 			}
 		}
+
 		button.addEventListener("click", ()=>{
 			normalText.textContent = + normalText.textContent + 1;
 		});
 		p.addEventListener("click", debounce(()=>{
 			debounceText.textContent = + debounceText.textContent + 1;
-		},500));
+		},2000));
 		h1.addEventListener("click", throttle(()=>{
 			throttleText.textContent = + throttleText.textContent + 1;
-		}, 500));
+		}, 2000));
 
 
 	</script>
