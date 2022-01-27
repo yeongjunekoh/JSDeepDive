@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<button>Click me!</button>
+		<p onclick="">Click me! p태그로 만든 Click me!</p>
+		<h1 onclick="">Click me! h1태그로 만든 Click me!</h1>
+		<em class="message" onclick=""></em>
+
+		<script>
+			const button = document.querySelector('button');
+			const p = document.querySelector('p');
+			const h1 = document.querySelector('h1');
+			const em = document.querySelector('.message');
+
+			function sleep(func, delay) {
+				const delayUntil = Date.now() + delay;
+
+				while (Date.now() < delayUntil) console.log("Execute while");
+
+				func();
+			}
+
+			function foo() {
+				console.log("foo")
+			}
+			function bar() {
+				console.log("bar")
+			}
+			function number(num) {
+				console.log(num);
+			}
+			// for( i=0;i < 1000000; i++){
+			// 	setTimeout(number, (1000000-i)*500, i);
+			// }
+			setTimeout(foo, 3*1000);
+			setTimeout(foo, 0);
+			// setTimeout(bar, 2*1000);
+			// setTimeout(bar, 4*1000);
+			// sleep(foo, 3*1000);
+			bar();
+			
+		</script>
+	</body>
+</html>
+
