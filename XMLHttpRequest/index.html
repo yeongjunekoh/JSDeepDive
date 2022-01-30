@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<button>Click me!</button>
+		<p onclick="">Click me! p태그로 만든 Click me!</p>
+		<h1 onclick="">Click me! h1태그로 만든 Click me!</h1>
+		<em class="message" onclick=""></em>
+
+		<script>
+			const button = document.querySelector('button');
+			const p = document.querySelector('p');
+			const h1 = document.querySelector('h1');
+			const em = document.querySelector('.message');
+
+			const xhr = new XMLHttpRequest();
+
+			//HTTP 요청 초기화
+			xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
+
+			// HTTP 요청 헤더 설정
+			// 클라이언트가 서버로 전송할 데이터의 MIME 타입 지정: json
+			// xhr.setRequestHeader('content-type', 'application/json');
+
+			console.log(xhr, "send이전");
+			button.onclick = () => xhr.send();
+			// xhr.send();
+			// console.log("안녕하세요");
+
+			
+			xhr.onreadystatechange = () => {
+				console.log(xhr);
+				if(xhr.readyState !== XMLHttpRequest.DONE) return;
+
+				if(xhr.status === 200) {
+					console.log(JSON.parse(xhr.response));
+				}else{
+					console.log("Error", xhr.status, xhr.statusText);
+				}
+			}
+
+
+
+		</script>
+	</body>
+</html>
