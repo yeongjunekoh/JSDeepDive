@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<button class="get">REST API GET</button>
+		<button class="post">REST API POST</button>
+		<button class="put">REST API PUT</button>
+		<button class="delete">REST API DELETE</button>
+		<pre></pre>
+
+		<script>
+			const getButton = document.querySelector('.get');
+			const postButton = document.querySelector('.post');
+			const putButton = document.querySelector('.put');
+			const deleteButton = document.querySelector('.delete');
+
+			const xhr = new XMLHttpRequest();
+
+			const getData = () => {
+				xhr.open('GET', '/todos');
+				xhr.send();
+			}
+			const postData = () => {
+				xhr.open('POST', '/todos');
+				xhr.setRequestHeader("content-type", "application/json")
+				xhr.send(JSON.stringify({id:4, content: "Angular", completed: false}));
+			}
+			const putData = () => {
+				xhr.open('PUT', '/todos/4');
+				xhr.setRequestHeader("content-type", "application/json")
+				xhr.send(JSON.stringify({id:4, content: "React", completed: true}));
+			}
+			const deleteData = () => {
+				xhr.open('DELETE', '/todos/4');
+				xhr.send();
+			}
+			
+			getButton.onclick = getData;
+			postButton.onclick = postData;
+			putButton.onclick = putData;
+			deleteButton.onclick = deleteData;
+
+
+			xhr.onreadystatechange = () => {
+				if(xhr.readyState !== XMLHttpRequest.DONE) return;
+
+				if(xhr.status === 200 || 201) {
+					document.querySelector('pre').textContent = xhr.response;
+				}else{
+					console.log("Error", xhr.status, xhr.statusText);
+				}
+			}
+
+		</script>
+	</body>
+</html>
