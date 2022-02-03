@@ -1,0 +1,8 @@
+.jsonServer/node_modules
+
+./node_modules
+
+./package-lock
+
+jsonServer/node_modules
+jsonServer/package-lock.json
