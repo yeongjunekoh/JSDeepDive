@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<script>
+
+			const promiseGet = url => {
+				return new Promise((resolve, reject) => {
+					const xhr = new XMLHttpRequest();
+					xhr.open("GET", url);
+					xhr.send();
+
+					xhr.onload = () => {
+						if(xhr.status === 200) {
+							resolve(JSON.parse(xhr.response));
+						}else{
+							reject(new Error(xhr.status));
+						}
+					}
+				})
+			}
+
+			promiseGet('https://jsonplaceholder.typicode.com/todos/1');
+			console.log("함수 결과 값", promiseGet('https://jsonplaceholder.typicode.com/todos/1'))
+			promiseGet('https://jsonplaceholder.typicode.com/todos/1').then(console.log).then(console.log);
+			console.log("실험");
+
+		</script>
+	</body>
+</html>
