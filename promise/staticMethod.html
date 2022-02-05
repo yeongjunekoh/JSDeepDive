@@ -34,6 +34,10 @@
                 console.log(res, "순차");
             }).catch(console.error)
 
+            //마이크로 태스크 큐 증명 실험
+            setTimeout(()=>console.log("실험"),0);
+            resolvedPromise.then(() => console.log(1));
+
             //처리 순서 보장 -> 셋중 하나가 에러면 에러 보장(발견되는 즉시 에러 발생)
             Promise.all([request1(),request2(), request3()])
             .then(console.log)
