@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<button>Click me!</button>
+		<p onclick="">Click me! p태그로 만든 Click me!</p>
+		<h1 onclick="">Click me! h1태그로 만든 Click me!</h1>
+		<em class="message" onclick=""></em>
+		<input type="text">
+
+		<script>
+
+			document.querySelector('input').oninput = function (){
+				console.log(this.value);
+				return this.value;
+			}
+
+
+			let g=0;
+			
+			//원한대로 0초 후에 값이 변경되지 않는다.
+			setTimeout(() => { g= 1000;}, 0);
+			console.log(g);
+
+			let getResponse;
+
+			const get = url => {
+				const xhr = new XMLHttpRequest();
+				xhr.open("GET", url);
+				xhr.send();
+				console.log("비동기 여부 판단")
+
+				xhr.onload = () => {
+					if(xhr.status === 200) {
+						console.log(JSON.parse(xhr.response));
+						
+						getResponse = JSON.parse(xhr.response);
+						return JSON.parse(xhr.response);
+					}else{
+						console.error(`${xhr.status}${xhr.statusText}`);
+					}
+				}
+			}
+
+			//get도 비동기 함수이다. => onload가 비동기 함수 => 상위의 let response => 처리리 순서가 보장 되지 않음
+			const result = get('https://jsonplaceholder.typicode.com/todos/1');
+			console.log(result, "결과값", getResponse);
+
+
+			// 콜백 함수를 비동기인 get에 전달해서 내부에서 처리해야함
+			const getCallbackResponse = (url, successCallback, failureCallback) => {
+				const xhr = new XMLHttpRequest();
+				xhr.open("GET", url);
+				xhr.send();
+				console.log("비동기 여부 판단")
+
+				xhr.onload = () => {
+					if(xhr.status === 200) {
+						console.log(JSON.parse(xhr.response));
+
+						successCallback(JSON.parse(xhr.response));
+					}else{
+						console.error(`${xhr.status}${xhr.statusText}`);
+
+						failureCallback(xhr.status);
+					}
+				}
+			}
+
+			//이런 식으로 콜백헬이 만들어진다. 
+			// const callbackHell = getCallbackResponse(
+			// 	'https://jsonplaceholder.typicode.com/todos/1', 
+			// 	({userId}) => {
+			// 		console.log(userId + 1);
+			// 		getCallbackResponse(`https://jsonplaceholder.typicode.com/todos/${userId}`, userInfo => {
+			// 			console.log(userInfo);
+			// 		})
+			// 	}, 
+			// 	() => {}
+			// );
+
+			// try{
+			// 	setTimeout(()=> {throw new Error("Error!");}, 1000);
+			// } catch (e) {
+			// 	console.log("캐치한 에러", e)
+			// }
+
+
+		</script>
+	</body>
+</html>
