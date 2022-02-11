@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>에러 처리의 필요성</title>
+	</head>
+	<body>
+		<script>
+            console.log("에러 던지기 이전", new Error("해당"))
+			throw {Error: "에러"};
+			try{
+			} catch(e) {
+				console.log(e);
+			}
+            console.log("에러 던지기 이후")
+		</script>
+	</body>
+</html>
+
+//Error에도 다양한 컨셉

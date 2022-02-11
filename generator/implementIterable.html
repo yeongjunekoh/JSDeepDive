@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>제너레이터 특징 메서드</title>
+	</head>
+	<body>
+		<button>Click me!</button>
+
+		<script>
+			const button = document.querySelector('button');
+			
+			//무한 이터러블을 생성하는 함수
+            // const infiniteFibonacci = (function () {
+            //     let [pre, cur] = [0, 1];
+
+            //     return {
+            //         [Symbol.iterator]() { return this; },
+            //         next() {
+            //             [pre, cur] = [cur, pre + cur];
+            //             return {value:cur};
+            //         }
+            //     };
+            // }());
+
+            // generator로 무한 이터러블 구현
+            const infiniteFibonacci = (function* () {
+                let [pre, cur] = [0, 1];
+
+                while(true) {
+                    [pre, cur] = [cur, pre + cur];
+                    yield cur;
+                };
+            }());
+
+            for (const num of infiniteFibonacci) {
+                if(num > 10000) break;
+                console.log(num);
+            }
+
+		</script>
+	</body>
+</html>

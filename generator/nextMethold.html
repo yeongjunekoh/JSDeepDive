@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>제너레이터 특징 메서드</title>
+	</head>
+	<body>
+		<button>Click me!</button>
+
+		<script>
+			const button = document.querySelector('button');
+			
+			function* genDecFunc() {
+                // try{
+					const x = yield 1;
+
+					yield x;
+
+                    const y = yield (x + 10);
+
+                    return x + y + 2;
+                // } catch(e){
+                //     console.log(e)
+                // }
+			};
+
+            const generator = genDecFunc();
+
+            // yield는 딱 멈추는 역할을 수행하는 키워드다. yield 이후의 표현식은 할당에 사용되지 않는다.
+            // 하나의 인수로 여겨진다.
+			console.log(generator.next());
+			console.log(generator.next("HAN"));
+			console.log(generator.next(1));
+			// console.log(generator.next());
+
+		</script>
+	</body>
+</html>

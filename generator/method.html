@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>제너레이터 특징 메서드</title>
+	</head>
+	<body>
+		<button>Click me!</button>
+
+		<script>
+			const button = document.querySelector('button');
+			
+			//제너레이터 함수 선언문
+			function* genDecFunc() {
+                // try{
+                    yield 1;
+                    yield 2;
+                    yield 3;
+                // } catch(e){
+                //     console.log(e)
+                // }
+			};
+
+            const generator = genDecFunc();
+
+            // 01. 3개의 값을 가지고, 4개의 next를 가진 경우 실험
+            // 02. 중간에 throw시와 return 시, 2가지 경우 실험
+            // 03. try, catch가 있을 경우 실험
+			console.log(generator.next());
+			console.log(generator.next());
+			// console.log(generator.throw("END!"));
+			console.log(generator.return("END!"));
+			console.log(generator.next());
+			console.log(generator.next());
+
+		</script>
+	</body>
+</html>

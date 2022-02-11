@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>비동기를 동기처럼 동작(제너레이터)</title>
+	</head>
+	<body>
+		<button>Click me!</button>
+
+		<script>
+			const button = document.querySelector('button');
+
+            const async = generatorFunc => {
+                const generator = generatorFunc();
+
+                const onResolved = arg => {
+                    const result = generator.next(arg);
+
+                    console.log(arg,result, "arg")
+
+                    return result.done ? result.value : result.value.then(res => onResolved(res));
+                };
+
+                return onResolved;
+            }
+			
+			(async(function* fetchTodo() {
+                const url = "https://jsonplaceholder.typicode.com/todos/1";
+
+                const response = yield fetch(url);
+                const todo = yield response.json();
+                console.log(todo, "TODO");
+            })());
+
+            console.log("안녕하세요");
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>에러 처리의 필요성</title>
+	</head>
+	<body>
+		<script>
+            const foo = () => {
+                // setTimeout(()=>{throw Error("Error!")},0);
+                throw Error("Error!")
+            }
+            const bar = () => {
+                foo();
+            }
+            const baz = () => {
+                
+                try{
+                    bar();
+                } catch(e) {
+                    return 1;
+                }
+            }
+
+            // baz();
+            console.log(baz());
+            
+
+            console.log("종료 안되쥬?");
+            
+            // 방어코드 -> api를 관리하는 함수나 메서드 -> axios가 에러면 catch면 []반환 -> 에러가 업는 코드
+            // setTimeout(()=>{console.log("이건 실행 안되죠?")},0)
+		</script>
+	</body>
+</html>
